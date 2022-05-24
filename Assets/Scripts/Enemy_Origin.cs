@@ -25,6 +25,10 @@ public class Enemy_Origin : MonoBehaviour
     private float spawnRadius = 13f;
     private Vector3 spawnPos;
 
+    [SerializeField] private Vector2 min_maxSpawnTime = new Vector2(8f,15f);
+    private Coroutine spawnCoroutine;
+    private float spawnTime;
+
     public static Vector2 RandomPointOnUnitCircle(float radius)
     {
         float angle = Random.Range(0f, Mathf.PI * 2);
@@ -44,7 +48,9 @@ public class Enemy_Origin : MonoBehaviour
             //nodeObj.transform.SetParent(this.transform);
             Vector2 rpoc = RandomPointOnUnitCircle(spawnRadius);
             spawnPos = new Vector3(rpoc.x, 0f, rpoc.y);
+            spawnTime = Random.Range(min_maxSpawnTime.x, min_maxSpawnTime.y);
             Instantiate(enemyPrefab, spawnPos + transform.position, Quaternion.identity);
+            StartCoroutine(spawnEnemy(spawnTime));
             //lastNode.transform.SetParent(this.transform);
         }
     }
@@ -54,5 +60,17 @@ public class Enemy_Origin : MonoBehaviour
     {
 
 
+    }
+
+    IEnumerator spawnEnemy(float time)
+    {
+        Vector2 rpoc = RandomPointOnUnitCircle(spawnRadius);
+        spawnPos = new Vector3(rpoc.x, 0f, rpoc.y);
+        Instantiate(enemyPrefab, spawnPos + transform.position, Quaternion.identity);
+        spawnTime = Random.Range(min_maxSpawnTime.x,min_maxSpawnTime.y);
+        yield return new WaitForSeconds(time);
+        if (spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
+        spawnCoroutine = StartCoroutine(spawnEnemy(spawnTime));
     }
 }

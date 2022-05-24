@@ -17,14 +17,23 @@ public class Enemy : MonoBehaviour
     private AnimationCurve spawnCurve;
     private float y_offset = 7f;
     private float destination;
+    private float getCloseValue;
     private float current;
 
     [SerializeField]
     private Vector2 min_maxHeightOffset;
     [SerializeField]
+    private Vector2 min_maxGetClose;
+    private float closeCurrent;
+    [SerializeField]
     private Vector2 min_maxChangeTimer;
     private float destTime;
     private Coroutine moveCoroutine;
+
+    [SerializeField] private GameObject hitParticles;
+    [SerializeField] private GameObject explodeParticles;
+    private int life = 1;
+    private GameObject player;
 
     void Start()
     {
@@ -36,13 +45,16 @@ public class Enemy : MonoBehaviour
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
         moveCoroutine = StartCoroutine(changeDestination(2f));
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
         current = Mathf.MoveTowards(current, destination, lerpSpeed * Time.deltaTime);
-        transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, destination, spawnCurve.Evaluate(current)),transform.position.z);
+        closeCurrent = Mathf.MoveTowards(closeCurrent, getCloseValue, lerpSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, destination, spawnCurve.Evaluate(current)), Mathf.MoveTowards(transform.localPosition.z, (transform.forward * getCloseValue).z, spawnCurve.Evaluate(closeCurrent)));
         transform.RotateAround(enemyOrigin.transform.position, new Vector3(0, 1, 0),rotationSpeed * Time.deltaTime);
+        transform.LookAt(player.transform);
     }
 
     IEnumerator changeDestination(float time)
@@ -51,6 +63,7 @@ public class Enemy : MonoBehaviour
         lerpSpeed = Random.Range(min_maxLerpSpeed.x, min_maxLerpSpeed.y);
         destTime = Random.Range(min_maxChangeTimer.x, min_maxChangeTimer.y);
         destination = enemyOrigin.transform.position.y + Random.Range(min_maxHeightOffset.x, min_maxHeightOffset.y);
+        getCloseValue = Random.Range(min_maxGetClose.x, min_maxGetClose.y);
         rotationSpeed = rotationSpeed * generateRandomInt();
         Debug.Log("Cambio");
         if (moveCoroutine != null)
@@ -67,5 +80,19 @@ public class Enemy : MonoBehaviour
             value = Random.Range(-1, 1);
         }
         return value;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Bullet") && life != 0)
+        {
+            life--;
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
+        } 
+        else if(other.CompareTag("Bullet") && life == 0)
+        {
+            Instantiate(explodeParticles, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 }
