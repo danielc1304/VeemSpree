@@ -743,7 +743,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 1
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
@@ -1041,7 +1041,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.094600126
+          value: 0.6351351
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1051,11 +1051,11 @@ ParticleSystem:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -0.22355242
-          outSlope: -0.22355242
+          inSlope: -0.40796673
+          outSlope: -0.40796673
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.2659769
+          inWeight: 0.60375315
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -3869,9 +3869,9 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
-    ratio: 0
-    light: {fileID: 0}
+    enabled: 1
+    ratio: 1
+    light: {fileID: 155622847450899556, guid: bcb23511b93a5094196df7d1a11a4448, type: 3}
     randomDistribution: 1
     color: 1
     range: 1
@@ -3990,7 +3990,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.02
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4125,7 +4125,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.21622086
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -4133,8 +4133,17 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
+          time: 0.23762348
+          value: 0.6680264
+          inSlope: -0.2643946
+          outSlope: -0.2643946
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -4806,8 +4815,8 @@ ParticleSystemRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5541939212774592923}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
@@ -4876,3 +4885,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c148759c32beac74285a6b4837283611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSound: {fileID: 8300000, guid: f61e0931de9c64e4197a11dd6b41fffc, type: 3}
+  volume: 2

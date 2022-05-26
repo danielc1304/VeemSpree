@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Origin : MonoBehaviour
@@ -72,5 +71,11 @@ public class Enemy_Origin : MonoBehaviour
         if (spawnCoroutine != null)
             StopCoroutine(spawnCoroutine);
         spawnCoroutine = StartCoroutine(spawnEnemy(spawnTime));
+    }
+
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }

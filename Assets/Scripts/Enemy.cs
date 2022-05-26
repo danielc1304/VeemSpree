@@ -35,6 +35,10 @@ public class Enemy : MonoBehaviour
     private int life = 1;
     private GameObject player;
 
+    [SerializeField] Player playerScript;
+    [SerializeField] GameObject enemyBullet;
+    int randomShootChance;
+
     void Start()
     {
         destination = transform.position.y;
@@ -65,10 +69,20 @@ public class Enemy : MonoBehaviour
         destination = enemyOrigin.transform.position.y + Random.Range(min_maxHeightOffset.x, min_maxHeightOffset.y);
         getCloseValue = Random.Range(min_maxGetClose.x, min_maxGetClose.y);
         rotationSpeed = rotationSpeed * generateRandomInt();
+        Invoke("decideToShoot", 1f);
         Debug.Log("Cambio");
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
         moveCoroutine = StartCoroutine(changeDestination(destTime));
+    }
+
+    private void decideToShoot()
+    {
+        randomShootChance = Random.Range(0, 10);
+        if(randomShootChance <= 2)
+        {
+            Instantiate(enemyBullet, transform.position, transform.rotation);
+        }
     }
 
     private int generateRandomInt()
@@ -92,6 +106,7 @@ public class Enemy : MonoBehaviour
         else if(other.CompareTag("Bullet") && life == 0)
         {
             Instantiate(explodeParticles, transform.position, Quaternion.identity);
+            playerScript.updatePuntaje();
             Destroy(this.gameObject);
         }
     }
