@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
@@ -120,8 +118,8 @@ public class InputManager : MonoBehaviour
         {
             OnTriggerRightPressed.Invoke();
             rightTriggerPressed = true;
+            rightGun.doShoot();
             Debug.Log("Righ Trigger Pressed");
-            rightGun.shoot();
         }
         if (rightTriggerPressed && rightTriggerValue < min_maxThreshold.x)
         {
@@ -164,7 +162,7 @@ public class InputManager : MonoBehaviour
             OnTriggerLeftPressed.Invoke();
             leftTriggerPressed = true;
             Debug.Log("Left Trigger Pressed");
-            leftGun.shoot();
+            leftGun.doShoot();
         }
         if (leftTriggerPressed && leftTriggerValue < min_maxThreshold.x)
         {

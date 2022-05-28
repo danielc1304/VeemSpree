@@ -39,7 +39,7 @@ public partial class @GenericXR_Controller : IInputActionCollection2, IDisposabl
                 {
                     ""name"": ""Trigger"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""be4e08de-548e-4719-8b74-8cbd4f23b4e2"",
+                    ""id"": ""24e0d571-466c-409d-b193-a7cd9ee16e14"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -60,7 +60,7 @@ public partial class @GenericXR_Controller : IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dd225208-7025-4080-a7b7-4c47e46a7aa6"",
+                    ""id"": ""ea4205f7-0dac-4a3b-ba7f-643f30beef4a"",
                     ""path"": ""<XRController>{LeftHand}/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -87,7 +87,7 @@ public partial class @GenericXR_Controller : IInputActionCollection2, IDisposabl
                 {
                     ""name"": ""Trigger"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""db3b931f-d0c2-4c37-b9ff-8614aa52979f"",
+                    ""id"": ""c95683db-c74b-462d-9188-5af3c7023ccc"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -108,7 +108,7 @@ public partial class @GenericXR_Controller : IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7a4528d1-dae1-4dfb-9d81-92d83059a189"",
+                    ""id"": ""47983901-ebf7-4e5a-b988-697c77951011"",
                     ""path"": ""<XRController>{RightHand}/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -120,7 +120,13 @@ public partial class @GenericXR_Controller : IInputActionCollection2, IDisposabl
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""DefaultXR"",
+            ""bindingGroup"": ""DefaultXR"",
+            ""devices"": []
+        }
+    ]
 }");
         // LeftController
         m_LeftController = asset.FindActionMap("LeftController", throwIfNotFound: true);
@@ -267,6 +273,15 @@ public partial class @GenericXR_Controller : IInputActionCollection2, IDisposabl
         }
     }
     public RightControllerActions @RightController => new RightControllerActions(this);
+    private int m_DefaultXRSchemeIndex = -1;
+    public InputControlScheme DefaultXRScheme
+    {
+        get
+        {
+            if (m_DefaultXRSchemeIndex == -1) m_DefaultXRSchemeIndex = asset.FindControlSchemeIndex("DefaultXR");
+            return asset.controlSchemes[m_DefaultXRSchemeIndex];
+        }
+    }
     public interface ILeftControllerActions
     {
         void OnGrip(InputAction.CallbackContext context);
