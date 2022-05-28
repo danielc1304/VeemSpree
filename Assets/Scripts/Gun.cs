@@ -7,20 +7,20 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform gunParent;
     [SerializeField] GameObject shotParticles;
     AudioSource gunAudio;
-    Animator shotAnim;
+    [SerializeField] AudioClip shotAudio;
+    [SerializeField] AudioClip shotEnergy;
 
     private void Start()
     {
-        shotAnim = this.GetComponent<Animator>();
         gunAudio = this.GetComponent<AudioSource>();
     }
 
-    public void shoot()
+    public void doShoot()
     {
+        gunAudio.PlayOneShot(shotAudio);
+        gunAudio.PlayOneShot(shotEnergy);
         Instantiate(bullet, shotOrigin.position, shotOrigin.rotation);
-        Instantiate(shotParticles, transform.position, transform.rotation);
+        Instantiate(shotParticles, transform.position + (transform.up * -.18f), transform.rotation);
         Debug.Log(gunParent.rotation);
-        shotAnim.Play("shoot");
-        gunAudio.Play();
     }
 }

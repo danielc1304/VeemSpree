@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef8aabeb54a22249a245de0f4b7a0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletVelocity: 150
+  bulletVelocity: 100
   isEnemy: 0
 --- !u!54 &2126850290884670822
 Rigidbody:

@@ -35,7 +35,11 @@ public class Enemy : MonoBehaviour
     private int life = 1;
     private GameObject player;
 
-    [SerializeField] Player playerScript;
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip dieSound;
+    AudioSource audioSource;
+
+    Player playerScript;
     [SerializeField] GameObject enemyBullet;
     int randomShootChance;
 
@@ -49,7 +53,9 @@ public class Enemy : MonoBehaviour
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
         moveCoroutine = StartCoroutine(changeDestination(2f));
+        audioSource = this.GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
     }
 
     void Update()
@@ -79,7 +85,7 @@ public class Enemy : MonoBehaviour
     private void decideToShoot()
     {
         randomShootChance = Random.Range(0, 10);
-        if(randomShootChance <= 2)
+        if(randomShootChance <=10)
         {
             Instantiate(enemyBullet, transform.position, transform.rotation);
         }
@@ -102,10 +108,12 @@ public class Enemy : MonoBehaviour
         {
             life--;
             Instantiate(hitParticles, transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(hitSound);
         } 
         else if(other.CompareTag("Bullet") && life == 0)
         {
             Instantiate(explodeParticles, transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(dieSound);
             playerScript.updatePuntaje();
             Destroy(this.gameObject);
         }

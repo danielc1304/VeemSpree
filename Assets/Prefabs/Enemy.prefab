@@ -14603,8 +14603,10 @@ MonoBehaviour:
     type: 3}
   explodeParticles: {fileID: 2223560500539906111, guid: d301e18aa2d21234bbdc1ad18f5d07a0,
     type: 3}
-  playerScript: {fileID: 0}
-  enemyBullet: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: f61e0931de9c64e4197a11dd6b41fffc, type: 3}
+  dieSound: {fileID: 8300000, guid: 3d6832c14d9f4ab48964b167e50b1b03, type: 3}
+  enemyBullet: {fileID: 4302455424795274503, guid: 827d8c5ed1f341540924a39a7f8c39cb,
+    type: 3}
 --- !u!82 &3537616268424022662
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14623,7 +14625,7 @@ AudioSource:
   Mute: 0
   Spatialize: 1
   SpatializePostEffects: 1
-  Priority: 128
+  Priority: 41
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

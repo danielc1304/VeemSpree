@@ -7,13 +7,6 @@ public class Enemy_Origin : MonoBehaviour
     private Vector3 rotationSpeed = new Vector3(0f, 50f, 0f);
 
     [SerializeField]
-    private float offset = 10f;
-
-
-    [SerializeField]
-    private float Y_offset = 5f;
-
-    [SerializeField]
     private int numberOfEnemy = 5;
     private GameObject nodeObj;
     private GameObject[] nodeArray;
@@ -42,15 +35,11 @@ public class Enemy_Origin : MonoBehaviour
         nodeArray = new GameObject[numberOfEnemy];
         foreach (GameObject node in nodeArray)
         {
-            // nodeObj = new GameObject("node");
-            //nodeObj.transform.position = this.transform.position + new Vector3(offset, Random.Range(-Y_offset, Y_offset), 0f);
-            //nodeObj.transform.SetParent(this.transform);
             Vector2 rpoc = RandomPointOnUnitCircle(spawnRadius);
             spawnPos = new Vector3(rpoc.x, 0f, rpoc.y);
             spawnTime = Random.Range(min_maxSpawnTime.x, min_maxSpawnTime.y);
             Instantiate(enemyPrefab, spawnPos + transform.position, Quaternion.identity);
             StartCoroutine(spawnEnemy(spawnTime));
-            //lastNode.transform.SetParent(this.transform);
         }
     }
 
