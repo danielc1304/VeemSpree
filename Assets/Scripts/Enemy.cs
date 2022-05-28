@@ -43,8 +43,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject enemyBullet;
     int randomShootChance;
 
+    private globalSense global;
+
     void Start()
     {
+        global = GameObject.FindGameObjectWithTag("global").GetComponent<globalSense>();
         destination = transform.position.y;
         transform.position += new Vector3(0, -y_offset, 0);
         enemyOrigin = GameObject.FindGameObjectWithTag("Origin");
@@ -65,6 +68,10 @@ public class Enemy : MonoBehaviour
         transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, destination, spawnCurve.Evaluate(current)), Mathf.MoveTowards(transform.localPosition.z, (transform.forward * getCloseValue).z, spawnCurve.Evaluate(closeCurrent)));
         transform.RotateAround(enemyOrigin.transform.position, new Vector3(0, 1, 0),rotationSpeed * Time.deltaTime);
         transform.LookAt(player.transform);
+        if (global.gameState == false)
+        {
+            die();
+        }
     }
 
     IEnumerator changeDestination(float time)
@@ -85,13 +92,10 @@ public class Enemy : MonoBehaviour
     private void decideToShoot()
     {
         randomShootChance = Random.Range(0, 10);
-<<<<<<< HEAD
-        if(randomShootChance <=10)
-=======
-        if(randomShootChance <= 2)
->>>>>>> 3c3c1513e3cc58afc7fd99202627b88482fc765c
+
+        if(randomShootChance <=2)
         {
-            Instantiate(enemyBullet, transform.position, transform.rotation);
+            Instantiate(enemyBullet, this.transform.position, transform.rotation);
         }
     }
 
@@ -116,10 +120,15 @@ public class Enemy : MonoBehaviour
         } 
         else if(other.CompareTag("Bullet") && life == 0)
         {
-            Instantiate(explodeParticles, transform.position, Quaternion.identity);
-            audioSource.PlayOneShot(dieSound);
-            playerScript.updatePuntaje();
-            Destroy(this.gameObject);
+            die();
         }
+    }
+
+    public void die()
+    {
+        Instantiate(explodeParticles, transform.position, Quaternion.identity);
+        audioSource.PlayOneShot(dieSound);
+        playerScript.updatePuntaje();
+        Destroy(this.gameObject);
     }
 }

@@ -13,8 +13,11 @@ public class Player : MonoBehaviour
     AudioSource playerAudioSource;
     [SerializeField] AudioClip getHit;
 
+    private globalSense global;
+
     private void Awake()
     {
+        global = GameObject.FindGameObjectWithTag("global").GetComponent<globalSense>();
         playerAudioSource = this.GetComponent<AudioSource>();
     }
 
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
 
     void resetGame()
     {
+        global.gameState = false;
         titleObj.SetActive(true);
         origin.SetActive(false);
         puntajeText.text = "Best: " + score;

@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float bulletVelocity;
     [SerializeField] bool isEnemy;
+    [SerializeField] GameObject particulasImpacto;
 
     private void Start()
     {
@@ -24,11 +25,19 @@ public class Bullet : MonoBehaviour
 
     private void deSpawn()
     {
+        Instantiate(particulasImpacto, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        deSpawn();
+        if (!other.CompareTag("Player"))
+        {
+            deSpawn();
+        }
+        else
+        {
+            deSpawn();
+        }
     }
 }

@@ -4885,5 +4885,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c148759c32beac74285a6b4837283611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSound: {fileID: 8300000, guid: f61e0931de9c64e4197a11dd6b41fffc, type: 3}
-  volume: 2
+  lifetime: 3

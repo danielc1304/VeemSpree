@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c148759c32beac74285a6b4837283611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSound: {fileID: 8300000, guid: 3d6832c14d9f4ab48964b167e50b1b03, type: 3}
-  volume: 3
+  lifetime: 4
 --- !u!1 &2223560501993709142
 GameObject:
   m_ObjectHideFlags: 0

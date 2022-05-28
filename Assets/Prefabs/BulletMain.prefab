@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4302455424795274502}
   - component: {fileID: 2126850290884670822}
   - component: {fileID: 4258816713673950539}
-  m_Layer: 0
+  - component: {fileID: 2092564328497419294}
+  m_Layer: 9
   m_Name: BulletMain
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -49,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletVelocity: 100
   isEnemy: 0
+  particulasImpacto: {fileID: 3304150066727404336, guid: d0f578a6aa9d7e04cb9362712e9ed876,
+    type: 3}
 --- !u!54 &2126850290884670822
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,6 +81,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2092564328497419294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302455424795274503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c148759c32beac74285a6b4837283611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 4
 --- !u!1 &5748024970241211796
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5748024970241211798}
   - component: {fileID: 5748024970241211799}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3358026583329592542}
   - component: {fileID: 7582854763684226010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9251870596863861}
   - component: {fileID: 2330215449548199320}
   - component: {fileID: 9124487452083406048}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4814,7 +4814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8040798606998000795}
   - component: {fileID: 4519984943391251863}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 2843655897769946341}
   - component: {fileID: 4526519985675785243}
   - component: {fileID: 6053625454375415975}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9712,7 +9712,7 @@ GameObject:
   - component: {fileID: 6808328385962288241}
   - component: {fileID: 8236129807622493520}
   - component: {fileID: 7876441060471390877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14517,9 +14517,9 @@ GameObject:
   - component: {fileID: 6114785998854123443}
   - component: {fileID: 7207468909302548517}
   - component: {fileID: 3537616268424022662}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Killer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14625,11 +14625,7 @@ AudioSource:
   Mute: 0
   Spatialize: 1
   SpatializePostEffects: 1
-<<<<<<< HEAD
-  Priority: 41
-=======
   Priority: 128
->>>>>>> 3c3c1513e3cc58afc7fd99202627b88482fc765c
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14717,7 +14713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4832177397630134388}
   - component: {fileID: 5890468392679150137}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: red (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14811,7 +14807,7 @@ GameObject:
   - component: {fileID: 4999123936835481503}
   - component: {fileID: 891620090310295996}
   - component: {fileID: 4832212982307680307}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19695,6 +19691,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: drone
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 624d33bf049906a44b492a398504162d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624d33bf049906a44b492a398504162d, type: 3}

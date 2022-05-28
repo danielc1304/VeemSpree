@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class suicideParticle : MonoBehaviour
 {
+
+    [SerializeField] float lifetime = 4f;
     void Start()
     {
-        Invoke("die", 4f);
+        Invoke("die", lifetime);
     }
 
     private void die()
