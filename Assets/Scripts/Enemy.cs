@@ -85,7 +85,11 @@ public class Enemy : MonoBehaviour
     private void decideToShoot()
     {
         randomShootChance = Random.Range(0, 10);
+<<<<<<< HEAD
         if(randomShootChance <=10)
+=======
+        if(randomShootChance <= 2)
+>>>>>>> 3c3c1513e3cc58afc7fd99202627b88482fc765c
         {
             Instantiate(enemyBullet, transform.position, transform.rotation);
         }
